@@ -1,0 +1,77 @@
+{
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "fields": [
+          {
+            "name": "configure_git_org",
+            "type": "String",
+            "params": [
+              {
+                "name": "org",
+                "type": "String"
+              },
+              {
+                "name": "api_key",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "name": "test_func",
+            "type": "Void"
+          },
+          {
+            "name": "handler",
+            "type": "Void"
+          },
+          {
+            "name": "configure_git",
+            "type": "Void",
+            "params": [
+              {
+                "name": "org",
+                "type": "String"
+              },
+              {
+                "name": "api_key",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "user_listen_comments",
+            "type": "Void",
+            "params": [
+              {
+                "name": "github_id",
+                "type": "String"
+              },
+              {
+                "name": "slack_id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "configure_org_comment",
+            "type": "Void",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "slack": "slack:",
+    "github": "github:"
+  }
+}
