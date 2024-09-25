@@ -3,41 +3,13 @@
     "types": [
       {
         "name": "Root",
-        "fields": [
-          {
-            "name": "configure_git_org",
-            "type": "String",
-            "params": [
-              {
-                "name": "org",
-                "type": "String"
-              },
-              {
-                "name": "api_key",
-                "type": "String"
-              }
-            ]
-          }
-        ],
         "actions": [
           {
-            "name": "test_func",
-            "type": "Void"
-          },
-          {
-            "name": "handler",
-            "type": "Void"
-          },
-          {
-            "name": "configure_git",
+            "name": "configure_org",
             "type": "Void",
             "params": [
               {
                 "name": "org",
-                "type": "String"
-              },
-              {
-                "name": "api_key",
                 "type": "String"
               }
             ]
@@ -47,7 +19,7 @@
             "type": "Void",
             "params": [
               {
-                "name": "github_id",
+                "name": "github_name",
                 "type": "String"
               },
               {
@@ -57,16 +29,73 @@
             ]
           },
           {
-            "name": "configure_org_comment",
+            "name": "user_alert_review_requested",
             "type": "Void",
             "params": [
               {
-                "name": "name",
+                "name": "github_name",
+                "type": "String"
+              },
+              {
+                "name": "slack_id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "user_alert_review_requested_1day",
+            "type": "Void",
+            "params": [
+              {
+                "name": "github_name",
+                "type": "String"
+              },
+              {
+                "name": "slack_id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "send_open_issues",
+            "type": "Void"
+          },
+          {
+            "name": "handle_comment",
+            "type": "Void"
+          },
+          {
+            "name": "handle_reviewrequested",
+            "type": "Void"
+          },
+          {
+            "name": "handle_reviewsubmitted",
+            "type": "Void"
+          },
+          {
+            "name": "test_func",
+            "type": "Void"
+          },
+          {
+            "name": "user_alert_open_issues",
+            "type": "Void",
+            "params": [
+              {
+                "name": "owner",
+                "type": "String"
+              },
+              {
+                "name": "repo",
+                "type": "String"
+              },
+              {
+                "name": "slack_id",
                 "type": "String"
               }
             ]
           }
-        ]
+        ],
+        "fields": []
       }
     ]
   },
