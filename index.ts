@@ -101,34 +101,19 @@ export async function handle_comment(_, { event }) {
 }
 
 export async function handle_reviewrequested(_, { event }) {
+  console.log("requestedreviewer",await event.requestedReviewer,"pullrequest",await event.pullRequest);
   const reviewer = await event.requestedReviewer.login;
-  // const pr = await event.pullRequest;
-  // const owner = await pr;
-  // console.log("reviewer",reviewer)
-  // console.log("pr",event.requestedReviewer, pr)
-  // console.log("owner",pr.owner)
-  // // console.log(event.pullRequest.owner)
-  // // console.log(await event.pullRequest.owner)
-  const {login: login} = event.pullRequest.owner.$query("{ login }")
-  console.log("pr_owner_login",login)
-  console.log("awaiting")
-  console.log(await event.pullRequest.owner.$query("{ login }"))
-  const pr_owner = await pr.owner
-  console.log(pr_owner,"pr_owner")
-  console.log(login,"pr_owner_login")
-  console.log("pr_owner",pr_owner,login)
-  console.log(pr.owner)
-  console.log(await pr.owner.$query(' { login } '))
-  // const pr_owner = "owner"
-  const title = "title" //await event.pullRequest.title;
+  const pullRequest = await event.pullRequest;
+  const {title,url} = await pullRequest.$query("{ title url }")
+  const owner = await pullRequest.owner;
+  const {login} = await owner.$query("{ login }");
   const slack_id = state.review_requested_alerts.get(reviewer);
-  const pr_url = "url"//await event.pullRequest.url;
 
   if (slack_id){
 
       //handle alerting about requested reviews
       await nodes.slack.users.one({ id: slack_id }).sendMessage({
-        text: `Your review has been requested for the following Pull Request: ${title} by ${pr_owner} found at ${pr_url}`,
+        text: `Your review has been requested for the following Pull Request: ${title} by ${login} found at ${url}`,
       });
   }
   //handle reminding about requested reviews
